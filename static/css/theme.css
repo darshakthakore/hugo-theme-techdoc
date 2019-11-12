@@ -45,6 +45,7 @@ h1 {
  * 2. Show the overflow in Edge and IE.
  */
 hr {
+  -webkit-box-sizing: content-box;
   box-sizing: content-box;
   /* 1 */
   height: 0;
@@ -83,7 +84,7 @@ abbr[title] {
   text-decoration: underline;
   /* 2 */
   -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
+  text-decoration: underline dotted;
   /* 2 */
 }
 
@@ -230,6 +231,7 @@ fieldset {
  *    `fieldset` elements in all browsers.
  */
 legend {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   /* 1 */
   color: inherit;
@@ -264,6 +266,7 @@ textarea {
  */
 [type="checkbox"],
 [type="radio"] {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   /* 1 */
   padding: 0;
@@ -343,6 +346,7 @@ template {
 		Reset
 *-----------------------*/
 * {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -414,6 +418,7 @@ fieldset {
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "游ゴシック体", YuGothic, "メイリオ", Meiryo, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  -webkit-font-feature-settings: 'pwid';
   font-feature-settings: 'pwid';
   line-height: 1.8;
   background: #fafafa;
@@ -728,23 +733,38 @@ body {
 .container {
   width: 100%;
   height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: column nowrap;
   flex-flow: column nowrap;
   margin: auto;
 }
 
 .content-container {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
   flex: 1 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 main {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 75%;
   flex: 0 0 75%;
   max-width: 75%;
 }
 
 .sidebar {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 25%;
   flex: 0 0 25%;
+  -webkit-box-ordinal-group: 0;
+  -ms-flex-order: -1;
   order: -1;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -752,22 +772,38 @@ main {
 
 @media screen and (max-width: 480px) {
   .content-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: column nowrap;
     flex-flow: column nowrap;
   }
   main {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
     flex: 0 0 auto;
     max-width: 100%;
   }
   .sidebar {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
     flex: 0 0 auto;
+    -webkit-box-ordinal-group: 2;
+    -ms-flex-order: 1;
     order: 1;
   }
 }
 
 .pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   font-weight: bold;
 }
@@ -778,8 +814,15 @@ main {
 
 @media screen and (max-width: 480px) {
   .pagination {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: column nowrap;
     flex-flow: column nowrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
   }
   .nav-next {
@@ -958,7 +1001,12 @@ header .github {
 }
 
 .global-menu li.parent:hover > ul.sub-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: column nowrap;
   flex-flow: column nowrap;
 }
 
@@ -1094,3 +1142,182 @@ main {
   text-align: right;
   color: #999;
 }
+
+.markdown-inner > :first-child {
+  margin-top: 0;
+}
+
+.markdown-inner > :last-child {
+  margin-bottom: 0;
+}
+
+.book-expand {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #e9ecef;
+  border-radius: 0.15rem;
+  overflow: hidden;
+}
+
+.book-expand .book-expand-head {
+  background: #f8f9fa;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.book-expand .book-expand-content {
+  display: none;
+  padding: 1rem;
+}
+
+.book-expand input[type="checkbox"]:checked + .book-expand-content {
+  display: block;
+}
+
+.book-tabs {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #e9ecef;
+  border-radius: 0.15rem;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.book-tabs label {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px transparent;
+  cursor: pointer;
+}
+
+.book-tabs .book-tabs-content {
+  -webkit-box-ordinal-group: 1000;
+  -ms-flex-order: 999;
+  order: 999;
+  width: 100%;
+  border-top: 1px solid #f8f9fa;
+  padding: 1rem;
+  display: none;
+}
+
+.book-tabs input[type="radio"]:checked + label {
+  border-bottom: 1px solid #05b;
+}
+
+.book-tabs input[type="radio"]:checked + label + .book-tabs-content {
+  display: block;
+}
+
+.book-columns {
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+
+.book-columns > div {
+  margin: 1rem 0;
+  min-width: 13.2rem;
+  padding: 0 1rem;
+}
+
+/* a.book-btn {
+  display: inline-block;
+  color: $color-link !important;
+  text-decoration: none !important;
+  border: $padding-1 solid $color-link;
+  border-radius: $border-radius;
+  padding: $padding-4 $padding-16;
+  margin-top: $padding-8;
+  margin-bottom: $padding-8;
+  cursor: pointer;
+} */
+.book-hint.info {
+  border-left-color: #6bf;
+  background-color: rgba(102, 187, 255, 0.1);
+}
+
+.book-hint.warning {
+  border-left-color: #fd6;
+  background-color: rgba(255, 221, 102, 0.1);
+}
+
+.book-hint.danger {
+  border-left-color: #f66;
+  background-color: rgba(255, 102, 102, 0.1);
+}
+
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.flex-auto {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+.flex-even {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1;
+  flex: 1 1;
+}
+
+.flex-wrap {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+/*
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.mx-auto {
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+@mixin spin($duration) {
+  animation: spin $duration ease infinite;
+  @keyframes spin {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+@mixin fixed {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+} */

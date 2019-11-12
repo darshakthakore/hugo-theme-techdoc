@@ -1,0 +1,8 @@
+// Adding a custom file to allow users to add customizations
+
+// These files are from the hugo-book theme
+// Integrating shortcodes from the theme
+// ref: https://github.com/alex-shpak/hugo-book
+@import "book/defaults";
+@import "book/shortcodes";
+@import "book/utils";
